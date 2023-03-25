@@ -1,0 +1,113 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+// função para calcular a sequência de Fibonacci
+void fibonacci(int n, int *a, int *b) {
+    int i, aux;
+    *a = 0;
+    *b = 1;
+    for (i = 2; *b < n; i++) {
+        aux = *b;
+        *b = *a + *b;
+        *a = aux;
+    }
+}
+
+int main()
+{
+    ///QUESTÃO 1
+    int indice = 13;
+    int soma = 0;
+    int k = 0;
+
+    while(k < indice){
+        k++;
+        soma += k;
+    }
+
+    printf("Variavel soma: %d" , soma);
+
+    ///QUESTÃO 2
+    int numero, a, b;
+    printf("\n\n Digite um numero: ");
+    scanf("%d", &numero);
+    fibonacci(numero, &a, &b);
+    if (numero == a || numero == b) {
+        printf("O numero %d pertence a sequencia de Fibonacci!\n", numero);
+    } else {
+        printf("O numero %d nao pertence a sequencia de Fibonacci.\n", numero);
+    }
+
+    ///QUESTÃO 3
+    //Descubra a lógica e complete o próximo elemento:
+
+    a) 1, 3, 5, 7, (9)
+
+    b) 2, 4, 8, 16, 32, 64, (128)
+
+    c) 0, 1, 4, 9, 16, 25, 36, (49)
+
+    d) 4, 16, 36, 64, (100)
+
+    e) 1, 1, 2, 3, 5, 8, (13)
+
+    f) 2,10, 12, 16, 17, 18, 19, (não se pode afirmar) 
+
+    ///QUESTÃO 4
+    Vou usar a fórmula da distância:
+
+    distância = velocidade x tempo
+
+    Vou chamar de "d" a distância percorrida pelo caminhão desde Franca até o
+    ponto onde os veículos se encontram. Nesse mesmo período de tempo, o carro percorreu
+    uma distância de 100 km - d, ou seja, a distância restante entre Ribeirão Preto e Franca.
+
+    Fica assim:
+
+    d = 80t        -- para o caminhão
+    100 - d = 110t -- para o carro
+
+    (t) é o tempo em horas desde o momento em que os veículos partiram.
+    Vou isolar a variável (d) em uma das equações e substituir na outra, ficando com:
+
+    d = 80t
+    100 - 80t = 110t
+    100 = 190t
+    t = 100/190
+    t = 0,5263 horas
+
+    Agora vou calcular a distância percorrida por cada veículo até o ponto onde se encontram:
+
+    Distância percorrida pelo caminhão:
+    d = 80t = 80 x 0,5263 = 42,11 km
+
+    Distância percorrida pelo carro:
+    100 - d = 100 - 42,11 = 57,89 km
+
+    A distância entre o ponto de encontro e a cidade de Ribeirão preto é igual para os dois veículos
+    
+    distância caminhão -> Ribeirão Preto = 100 - 42,11 =~ 57,89 km
+    distância percorrida pelo carro é de 57,89 km
+       
+    ///QUESTÃO 5
+    char string[100], string_invertida[100];
+    int i, j;
+
+    // Lendo a string original
+    printf("\n\n\nDigite uma string: ");
+    fflush(stdin);
+    scanf("%s", string);
+
+    // Invertendo a string
+    j = strlen(string) - 1;//tamanho da string
+    for (i = 0; i < strlen(string); i++) {
+        string_invertida[i] = string[j];
+        j--;
+    }
+    string_invertida[i] = '\0';// é usada para adicionar o caractere nulo \0
+
+    // Imprimindo a string invertida
+    printf("String invertida: %s\n", string_invertida);
+
+}
